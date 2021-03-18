@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Notion Widget</title>
+
+		<link
+			href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div class="bg-gray-800 min-h-screen flex flex-col justify-center">
+			<div class="w-full w-lg h-full bg-gray-800 text-white text-center">
+				<div class="mt-2 w-full flex items-center">
+					<div
+						class="bg-black text-center border-2 border-white rounded w-9/12"
+					>
+						<div
+							class="mt-1 mb-1 bg-black py-5 text-center bg-white rounded h-5"
+							id="month-bar"
+						></div>
+					</div>
+					<div id="month" class="pl-2 text-2xl">Month percent</div>
+				</div>
+				<div class="mt-2 w-full flex items-center">
+					<div
+						class="bg-black text-center border-2 border-white rounded mt-5 w-9/12"
+					>
+						<div
+							class="mt-1 mb-1 bg-black py-5 text-center bg-white rounded h-5"
+							id="year-bar"
+						></div>
+					</div>
+					<div id="year" class="pl-2 text-2xl">Year percent</div>
+				</div>
+				<div class="mt-2 w-full flex items-center">
+					<div
+						class="bg-black text-center border-2 border-white rounded mt-5 w-9/12"
+					>
+						<div
+							class="mt-1 mb-1 bg-black py-5 text-center bg-white rounded h-5"
+							style="width: 45%"
+						></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			document.getElementById("month").innerHTML = "Month: 90";
+
+			var now = new Date();
+			var number_actual_day = now.getDate();
+			var month_total_days = new Date(
+				now.getFullYear(),
+				now.getMonth() + 1,
+				0
+			).getDate();
+			var start = new Date(now.getFullYear(), 0, 0);
+			var diff =
+				now -
+				start +
+				(start.getTimezoneOffset() - now.getTimezoneOffset()) *
+					60 *
+					1000;
+			var oneDay = 1000 * 60 * 60 * 24;
+			var day_since_new_year = Math.floor(diff / oneDay);
+
+			var month_percent = Math.round(
+				(number_actual_day / month_total_days) * 100
+			);
+			var year_percent = Math.round((day_since_new_year / 365) * 100);
+
+			document.getElementById("month").innerHTML =
+				"Month: " + month_percent + "%";
+			document
+				.getElementById("month-bar")
+				.setAttribute("style", "width: " + month_percent + "%;");
+
+			document.getElementById("year").innerHTML =
+				"Year: " + year_percent + "%";
+			document
+				.getElementById("year-bar")
+				.setAttribute("style", "width: " + year_percent + "%;");
+		</script>
+	</body>
+</html>
