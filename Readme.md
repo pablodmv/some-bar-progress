@@ -2,7 +2,7 @@
 
 As other widget consumes a lot of CPU, this page of progress bar could be used as [Notion](https://www.notion.com) widget.
 
-It's simply, only an html + javascript file.
+It's simple, only an html + javascript file.
 
 If you don't have any hosting to deploy this proyect, you could deploy it to vercel clicking in the button below
 
