@@ -123,9 +123,7 @@
 						now.getFullYear(),
 						quarters[
 							currentQuarter - 2 > 0 ? currentQuarter - 2 : 0
-						] === 3
-							? 0
-							: 1,
+						],
 						0
 					)) /
 					oneDay
@@ -136,11 +134,13 @@
 				quarters[currentQuarter - 1 > 0 ? currentQuarter - 1 : 0],
 				0
 			);
+
 			var difbetweendates = lastDayOfCurrentQuarter - now;
-			// alert(
-			// 	"Falta para terminar el quarter " +
-			// 		Math.floor(difbetweendates / oneDay)
-			// );
+			alert(
+				"Falta para terminar el quarter " +
+					Math.floor(difbetweendates / oneDay)
+			);
+			alert(totalDaysOfActualQuarter);
 			// alert("Dias totales del quarter" + totalDaysOfActualQuarter);
 			var quarter_Percent =
 				100 -
