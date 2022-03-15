@@ -129,6 +129,20 @@
 					oneDay
 			);
 
+			alert("Primero: " + new Date(
+					now.getFullYear(),
+					quarters[currentQuarter - 1 > 0 ? currentQuarter - 1 : 0],
+					0
+				));
+
+				alert("Segundo" +  	new Date(
+						now.getFullYear(),
+						quarters[
+							currentQuarter - 2 > 0 ? currentQuarter - 2 : 0
+						],
+						0
+					));
+
 			var lastDayOfCurrentQuarter = new Date(
 				now.getFullYear(),
 				quarters[currentQuarter - 1 > 0 ? currentQuarter - 1 : 0],
