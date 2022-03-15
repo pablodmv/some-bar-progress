@@ -116,13 +116,13 @@
 			var totalDaysOfActualQuarter = Math.floor(
 				(new Date(
 					now.getFullYear(),
-					quarters[currentQuarter - 1 > 0 ? currentQuarter - 1 : 0],
+					quarters[currentQuarter - 1 > 0 ? currentQuarter - 1 : currentQuarter],
 					0
 				) -
 					new Date(
 						now.getFullYear(),
 						quarters[
-							currentQuarter - 2 > 0 ? currentQuarter - 2 : 0
+							currentQuarter - 2 > 0 ? currentQuarter - 2 : currentQuarter
 						],
 						0
 					)) /
