@@ -109,62 +109,48 @@
 
 			// QUARTER CALCS
 
-			var actualMonth = now.getMonth() + 1;
-			var currentQuarter = Math.ceil(actualMonth / 3);
-			var quarters = [3, 6, 9, 12];
+			// var actualMonth = now.getMonth() + 1;
+			// var currentQuarter = Math.ceil(actualMonth / 3);
+			// var quarters = [3, 6, 9, 12];
 
-			var totalDaysOfActualQuarter = Math.floor(
-				(new Date(
-					now.getFullYear(),
-					quarters[currentQuarter - 1 > 0 ? currentQuarter - 1 : currentQuarter],
-					0
-				) -
-					new Date(
-						now.getFullYear(),
-						quarters[
-							currentQuarter - 2 > 0 ? currentQuarter - 2 : currentQuarter
-						],
-						0
-					)) /
-					oneDay
-			);
-
-			alert("Current quarter " + currentQuarter)
-
-			alert("Primero: " + new Date(
-					now.getFullYear(),
-					quarters[currentQuarter - 1 > 0 ? currentQuarter - 1 : 0],
-					0
-				));
-
-				alert("Segundo" +  	new Date(
-						now.getFullYear(),
-						quarters[
-							currentQuarter - 2 > 0 ? currentQuarter - 2 : 0
-						],
-						0
-					));
-
-			var lastDayOfCurrentQuarter = new Date(
-				now.getFullYear(),
-				quarters[currentQuarter - 1 > 0 ? currentQuarter - 1 : 0],
+			var quarter = Math.floor(now.getMonth() / 3);
+			var firstDate = new Date(now.getFullYear(), quarter * 3, 1);
+			var endDate = new Date(
+				firstDate.getFullYear(),
+				firstDate.getMonth() + 3,
 				0
 			);
 
-			var difbetweendates = lastDayOfCurrentQuarter - now;
-			alert(
-				"Falta para terminar el quarter " +
-					Math.floor(difbetweendates / oneDay)
-			);
-			alert(totalDaysOfActualQuarter); 
-			alert("Dias totales del quarter" + totalDaysOfActualQuarter);
-			var quarter_Percent =
+			var totalDaysOfActualQuarter = endDate - firstDate;
+
+			var difbetweendates = endDate - now;
+
+			var quarter_Percent = Math.floor(
 				100 -
-				Math.round(
-					(Math.floor(difbetweendates / oneDay) /
-						totalDaysOfActualQuarter) *
-						100
-				);
+					Math.round(
+						(difbetweendates /
+							oneDay /
+							(totalDaysOfActualQuarter / oneDay)) *
+							100
+					)
+			);
+
+			// alert(
+			// 	"Falta para terminar el quarter " +
+			// 		Math.floor(difbetweendates / oneDay) +
+			// 		": " +
+			// 		totalDaysOfActualQuarter / oneDay +
+			// 		": Percent " +
+			// 		Math.floor(
+			// 			100 -
+			// 				Math.round(
+			// 					(difbetweendates /
+			// 						oneDay /
+			// 						(totalDaysOfActualQuarter / oneDay)) *
+			// 						100
+			// 				)
+			// 		)
+			// );
 
 			// MONTH
 			document.getElementById("month").innerHTML =
